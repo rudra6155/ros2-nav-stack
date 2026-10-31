@@ -1,0 +1,6 @@
+world,episode,seed,success,time_to_goal_s,path_length_m,collision_count,min_obstacle_distance_m,timed_out
+cluttered,1,1001,true,14.200,6.334,0,0.362,false
+cluttered,2,1002,true,12.440,5.231,0,0.255,false
+cluttered,3,1003,true,23.060,10.974,0,0.380,false
+cluttered,4,1004,true,24.160,10.948,0,0.323,false
+cluttered,5,1005,true,19.260,8.798,0,0.286,false

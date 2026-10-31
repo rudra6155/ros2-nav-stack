@@ -1,0 +1,45 @@
+name: Full evaluation (manual)
+
+# Runs the evaluation episodes. NOT part of CI: it takes about 12 minutes of simulation per
+# world. Trigger it from the Actions tab ("Run workflow").
+on:
+  workflow_dispatch:
+    inputs:
+      episodes:
+        description: Episodes per world
+        default: "20"
+      worlds:
+        description: Space-separated worlds
+        default: "simple cluttered"
+
+jobs:
+  evaluate:
+    runs-on: ubuntu-22.04
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+      - name: docker compose build
+        run: docker compose build
+      - name: colcon build
+        run: docker compose run --rm ros2 bash -lc "colcon build --symlink-install"
+      - name: Run episodes
+        run: |
+          for w in ${{ github.event.inputs.worlds }}; do
+            docker compose run --rm ros2 bash -lc "ros2 run evaluation run_episodes --world $w --episodes ${{ github.event.inputs.episodes }}"
+          done
+      - name: Summarize
+        run: |
+          docker compose run --rm ros2 bash -lc "python3 /workspace/ros2_ws/src/evaluation/scripts/summarize.py --expected ${{ github.event.inputs.episodes }}"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: evaluation-results
+          path: |
+            results/episodes.csv
+            results/summary.csv
+            results/summary.png
+            results/episode_diagnostics.csv
+            results/rtf_log.csv
+            results/crash_log.txt
+            results/limits_report.txt
+          if-no-files-found: ignore

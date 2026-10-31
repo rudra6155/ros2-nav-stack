@@ -1,0 +1,3 @@
+world,n_episodes,success_rate,mean_time_s,std_time_s,mean_path_m,collision_count_total,timeout_count,mean_rtf
+simple,20,1.0000,17.1200,4.8491,7.5725,0,0,0.9953
+cluttered,20,1.0000,18.0460,4.4041,8.0534,0,0,0.9954

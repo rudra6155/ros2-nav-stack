@@ -1,0 +1,8 @@
+{
+  "name": "check_repro",
+  "status": "pass",
+  "utc": "2026-10-29T21:22:18Z",
+  "command": "scripts/check_repro.sh simple 7",
+  "git_commit": "6832a28",
+  "details": "[run_episodes] starting stack (log: /workspace/results/tmp/repro/logs/repro_simple_launch_1.log)\n[run_episodes] simple ep  7/1 seed 1007 start (-5.06, -1.56) goal (3.02, -1.64) -> SUCCESS [goal_reached] t=17.5s path=7.82m coll=0 mind=0.94 rtf=0.99\n[run_episodes] DONE world=simple episodes=1 success=1 collisions=0 timed_out=0 crashed=0 wall=0.4 min\nseed      original=      1007  rerun=      1007  same\nstart_x   original=   -5.0589  rerun=   -5.0589  same\nstart_y   original=   -1.5566  rerun=   -1.5566  same\nstart_yaw original=    1.5788  rerun=    1.5788  same\ngoal_x    original=    3.0226  rerun=    3.0226  same\ngoal_y    original=   -1.6364  rerun=   -1.6364  same\nPASS: episode 7 of simple re-run with seed 1007 spawned at the same pose (and same goal)\n"
+}

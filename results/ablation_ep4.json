@@ -1,0 +1,56 @@
+{
+  "lookahead_0.6": {
+    "runs": 3,
+    "runs_with_contact": 0,
+    "runs_success": 3,
+    "mean_min_distance_m": 0.26,
+    "min_min_distance_m": 0.257,
+    "detail": [
+      {
+        "success": true,
+        "collisions": 0,
+        "min_distance_m": 0.262,
+        "stop_reason": "goal_reached"
+      },
+      {
+        "success": true,
+        "collisions": 0,
+        "min_distance_m": 0.257,
+        "stop_reason": "goal_reached"
+      },
+      {
+        "success": true,
+        "collisions": 0,
+        "min_distance_m": 0.262,
+        "stop_reason": "goal_reached"
+      }
+    ]
+  },
+  "lookahead_1.2": {
+    "runs": 3,
+    "runs_with_contact": 3,
+    "runs_success": 0,
+    "mean_min_distance_m": 0.16,
+    "min_min_distance_m": 0.16,
+    "detail": [
+      {
+        "success": false,
+        "collisions": 1,
+        "min_distance_m": 0.16,
+        "stop_reason": "hard_timeout"
+      },
+      {
+        "success": false,
+        "collisions": 1,
+        "min_distance_m": 0.16,
+        "stop_reason": "hard_timeout"
+      },
+      {
+        "success": false,
+        "collisions": 1,
+        "min_distance_m": 0.16,
+        "stop_reason": "hard_timeout"
+      }
+    ]
+  }
+}

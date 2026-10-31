@@ -1,0 +1,21 @@
+{
+  "lk12_ep4": {
+    "collided": true,
+    "first_contact_t_s": 4.3,
+    "contact_pose": [
+      -2.31,
+      4.25,
+      -1.9
+    ],
+    "clearance_at_contact_m": 0.16,
+    "contact_messages": 2040,
+    "odom_samples_after_contact": 2040,
+    "observed_s_after_contact": 40.8,
+    "displacement_after_contact_m": 0.02,
+    "max_speed_after_5s_mps": 0.002,
+    "cmd_vel_msgs": 942,
+    "cmd_vel_forward_fraction": 0.928,
+    "plan_msgs": 94,
+    "plan_nonempty_fraction": 0.957
+  }
+}

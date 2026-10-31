@@ -1,0 +1,6 @@
+world,episode,seed,start_x,start_y,start_yaw,goal_x,goal_y,straight_dist_m,duration_s,final_goal_dist_m,max_stationary_s,empty_plan_frac,crashed,stop_reason,rtf,timeout_cap_s
+cluttered,1,1001,4.2314,3.8956,0.4334,4.8668,-2.2865,6.215,14.500,0.297,0.000,0.000,false,goal_reached,1.000,120.0
+cluttered,2,1002,-5.3065,5.4963,-1.7069,0.1678,5.0445,5.493,19.700,0.299,0.200,0.000,false,goal_reached,0.999,120.0
+cluttered,3,1003,3.6853,-3.7524,0.8390,-1.8585,5.4628,10.754,22.800,0.299,0.000,0.000,false,goal_reached,0.998,120.0
+cluttered,4,1004,-2.3339,5.3840,0.2359,-5.4636,-5.0821,10.924,24.840,0.299,0.000,0.000,false,goal_reached,0.997,120.0
+cluttered,5,1005,5.1774,-3.0090,-2.5141,-0.6008,3.5132,8.714,18.520,0.300,0.000,0.000,false,goal_reached,0.998,120.0

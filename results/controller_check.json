@@ -1,0 +1,14 @@
+{
+  "start_offset_m": 0.5,
+  "duration_s": 5,
+  "threshold_m": 0.1,
+  "initial_error_m": 0.499999,
+  "error_at_duration_m": 0.0185435,
+  "settle_time_s": 2.68,
+  "max_commanded_linear_mps": 0.499997,
+  "max_commanded_angular_radps": 0.62969,
+  "limit_linear_mps": 0.5,
+  "limit_angular_radps": 1.2,
+  "samples": 261,
+  "passed": true
+}

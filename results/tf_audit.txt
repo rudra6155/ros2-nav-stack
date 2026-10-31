@@ -1,0 +1,64 @@
+== launched: ros2 launch bringup sim.launch.py world:=simple headless:=true  (log: /workspace/results/logs/check_tf_launch.log)
+== waiting 20 s
+
+== TF (tf2_echo must resolve each pair)
+PASS  tf2_echo map odom resolves
+PASS  tf2_echo odom base_link resolves
+PASS  tf2_echo map base_link resolves
+PASS  tf2_echo base_link laser resolves
+PASS  tf2_echo base_link camera resolves
+
+== topics (polled for up to 30 s: DDS discovery is not instantaneous)
+PASS  topic /scan exists
+PASS  topic /odom exists
+PASS  topic /cmd_vel exists
+PASS  topic /plan exists
+PASS  topic /obstacles exists
+PASS  topic /costmap exists
+PASS  topic /goal_pose exists
+PASS  topic /tf exists
+PASS  topic /tf_static exists
+PASS  topic /clock exists
+
+== nodes (ros2 node list must include every node in scripts/expected_nodes.txt; polled for up to 40 s)
+ros2 node list:
+    /astar_planner
+    /bumper_plugin
+    /diff_drive
+    /gazebo
+    /gazebo_ros_state
+    /lidar_plugin
+    /map_odom_static_tf
+    /obstacle_detector
+    /robot_state_publisher
+    /transform_listener_impl_56466dd15590
+    /waypoint_follower
+PASS  node /gazebo is in ros2 node list
+PASS  node /gazebo_ros_state is in ros2 node list
+PASS  node /diff_drive is in ros2 node list
+PASS  node /lidar_plugin is in ros2 node list
+PASS  node /bumper_plugin is in ros2 node list
+PASS  node /robot_state_publisher is in ros2 node list
+PASS  node /map_odom_static_tf is in ros2 node list
+PASS  node /obstacle_detector is in ros2 node list
+PASS  node /astar_planner is in ros2 node list
+PASS  node /waypoint_follower is in ros2 node list
+PASS  rclpy graph cross-check: ALL 10 nodes present after 2.9 s
+
+== simulation time (use_sim_time must be True on every stack node)
+PASS  /obstacle_detector use_sim_time = True
+PASS  /astar_planner use_sim_time = True
+PASS  /waypoint_follower use_sim_time = True
+PASS  /robot_state_publisher use_sim_time = True
+PASS  /map_odom_static_tf use_sim_time = True
+PASS  sim.launch.py asserted use_sim_time
+
+== liveness (one message each, 25 s budget per topic)
+PASS  /clock is publishing
+PASS  /scan is publishing
+PASS  /odom is publishing
+PASS  /costmap is publishing
+PASS  /obstacles is publishing
+PASS  /tf is publishing
+
+RESULT: PASS (all checks)

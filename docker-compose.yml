@@ -1,0 +1,17 @@
+services:
+  ros2:
+    image: ros2-nav-stack:humble
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        BASE_IMAGE: ${BASE_IMAGE:-ubuntu:22.04}
+        ROS_APT_URL: ${ROS_APT_URL:-http://packages.ros.org/ros2/ubuntu}
+    working_dir: /workspace/ros2_ws
+    volumes:
+      - .:/workspace
+    environment:
+      ROS_DOMAIN_ID: "42"
+      # All timing in the stack is simulation time; Gazebo is always headless here.
+      GAZEBO_MODEL_DATABASE_URI: ""
+    shm_size: "1gb"

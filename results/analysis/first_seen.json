@@ -1,0 +1,26 @@
+{
+  "cluttered_2": {
+    "obstacle": "cluttered_cyl_29",
+    "closest_approach_m": 0.18,
+    "closest_t_s": 3.36,
+    "first_return_t_s": -0.18,
+    "first_return_range_m": 0.96,
+    "seconds_from_first_sight_to_closest_approach": 3.54
+  },
+  "cluttered_13": {
+    "obstacle": "cluttered_box_3",
+    "closest_approach_m": 0.225,
+    "closest_t_s": 16.14,
+    "first_return_t_s": 6.63,
+    "first_return_range_m": 4.19,
+    "seconds_from_first_sight_to_closest_approach": 9.51
+  },
+  "cluttered_15": {
+    "obstacle": "cluttered_cyl_15",
+    "closest_approach_m": 0.189,
+    "closest_t_s": 12.72,
+    "first_return_t_s": -0.17,
+    "first_return_range_m": 5.47,
+    "seconds_from_first_sight_to_closest_approach": 12.88
+  }
+}

@@ -1,0 +1,11 @@
+# Single source of truth for the robot's velocity limits.
+#
+#  * the URDF (wheel joint velocity limits) reads these values via xacro.load_yaml
+#  * the controller (waypoint_follower) loads this file as a ROS parameter file
+#
+# The wildcard node name makes the same file valid as a parameter file for any node
+# that declares these parameters (only waypoint_follower does).
+/**:
+  ros__parameters:
+    max_linear_velocity: 0.5    # m/s   (clamp applied to every /cmd_vel the controller publishes)
+    max_angular_velocity: 1.2   # rad/s

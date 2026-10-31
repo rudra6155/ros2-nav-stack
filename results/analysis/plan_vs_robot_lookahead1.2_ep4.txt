@@ -1,0 +1,36 @@
+cluttered episode 4 seed 1004:   t[s]   clearance  cross-track  plan-min-clearance(next 1.5 m)  speed-ish
+                         0.00     0.616         nan          nan  <-- closest
+                         0.25     0.616         nan          nan  <-- closest
+                         0.50     0.616       0.000        0.277  <-- closest
+                         0.75     0.616       0.000        0.277  <-- closest
+                         1.00     0.616       0.000        0.277
+                         1.25     0.616       0.000        0.277
+                         1.50     0.616       0.000        0.259
+                         1.75     0.660       0.053        0.259
+                         2.00     0.751       0.060        0.286
+                         2.25     0.842       0.114        0.286
+                         2.50     0.937       0.049        0.247
+                         2.75     0.834       0.093        0.247
+                         3.00     0.722       0.055        0.329
+                         3.25     0.624       0.103        0.329
+                         3.50     0.512       0.057        0.278  <-- closest
+                         3.75     0.404       0.119        0.278  <-- closest
+                         4.00     0.288       0.051        0.223  <-- closest
+                         4.25     0.184       0.104        0.223  <-- closest
+                         4.50     0.160       0.031        0.100  <-- closest
+                         4.75     0.160       0.046        0.100  <-- closest
+                         5.00     0.160       0.004        0.115  <-- closest
+                         5.25     0.160       0.006        0.115  <-- closest
+                         5.50     0.160       0.001        0.140
+                         5.75     0.160       0.001        0.140
+                         6.00     0.160       0.000        0.140
+                         6.25     0.160       0.001        0.140
+                         6.50     0.160       0.000        0.140
+                         6.75     0.160       0.001        0.140
+                         7.00     0.160       0.000        0.139
+                         7.25     0.160       0.001        0.139
+                         7.50     0.160       0.000        0.139
+                         7.75     0.160       0.001        0.139  <-- closest
+                         8.00     0.160       0.000        0.138
+closest approach: clearance 0.160 m at t=7.75 s, cross-track to the plan then 0.001 m, plan clearance ahead 0.139 m
+plan point nearest to an obstacle: (-2.42, 4.18), clearance to the true surface 0.139 m; distance from the nearest true-surface point to the closest lidar return seen so far: 0.001 m; that plan point is 0.09 m from the robot

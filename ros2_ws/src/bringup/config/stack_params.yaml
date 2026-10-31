@@ -1,0 +1,38 @@
+# Parameters of the navigation stack. Velocity limits are NOT here: they live in
+# robot_description/config/robot_limits.yaml (single source of truth).
+obstacle_detector:
+  ros__parameters:
+    global_frame: map
+    scan_resolution_deg: 2.0       # fixed angular resolution after downsampling (180 beams)
+    cluster_gap_m: 0.15
+    min_cluster_points: 3
+    map_resolution: 0.1            # m / cell
+    map_width_m: 14.0              # 12 m arena + 1 m margin each side
+    map_height_m: 14.0
+    map_origin_x: -7.0
+    map_origin_y: -7.0
+    costmap_publish_rate_hz: 2.0
+
+astar_planner:
+  ros__parameters:
+    global_frame: map
+    robot_frame: base_link
+    inflation_radius: 0.30         # m, hard inflation (robot radius 0.16 m + 0.14 m margin)
+    robot_radius: 0.16
+    occupied_threshold: 65
+    unknown_is_free: true          # the map is built online; replanning fixes optimistic plans
+    smooth_path: true              # line-of-sight shortcutting
+    output_spacing: 0.10
+    replan_rate_hz: 2.0
+    goal_reached_distance: 0.20
+
+waypoint_follower:
+  ros__parameters:
+    lookahead_distance: 0.6        # m (overridable: ros2 launch ... lookahead:=0.4)
+    goal_tolerance: 0.10
+    min_linear_velocity: 0.08
+    slowdown_distance: 0.8
+    rotate_in_place_angle: 0.9
+    heading_gain: 1.5
+    control_rate_hz: 20.0
+    plan_timeout_s: 3.0

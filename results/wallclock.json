@@ -1,0 +1,64 @@
+{
+  "evaluation_runs": [
+    {
+      "tag": "eval",
+      "world": "simple",
+      "episodes": 20,
+      "wall_minutes": 6.93
+    },
+    {
+      "tag": "eval",
+      "world": "cluttered",
+      "episodes": 20,
+      "wall_minutes": 7.41
+    }
+  ],
+  "total_minutes": 14.3,
+  "total_episodes": 40,
+  "sensitivity_runs": [
+    {
+      "tag": "sens_inflation_0.2",
+      "world": "cluttered",
+      "episodes": 5,
+      "wall_minutes": 2.07
+    },
+    {
+      "tag": "sens_inflation_0.3",
+      "world": "cluttered",
+      "episodes": 5,
+      "wall_minutes": 1.78
+    },
+    {
+      "tag": "sens_inflation_0.4",
+      "world": "cluttered",
+      "episodes": 5,
+      "wall_minutes": 1.98
+    },
+    {
+      "tag": "sens_inflation_0.5",
+      "world": "cluttered",
+      "episodes": 5,
+      "wall_minutes": 2.85
+    },
+    {
+      "tag": "sens_lookahead_0.3",
+      "world": "cluttered",
+      "episodes": 5,
+      "wall_minutes": 2.12
+    },
+    {
+      "tag": "sens_lookahead_0.6",
+      "world": "cluttered",
+      "episodes": 5,
+      "wall_minutes": 1.94
+    },
+    {
+      "tag": "sens_lookahead_1.2",
+      "world": "cluttered",
+      "episodes": 5,
+      "wall_minutes": 3.68
+    }
+  ],
+  "sensitivity_total_minutes": 16.4,
+  "note": "wall-clock minutes including the ~20 s stack start-up of each run; real-time factor is capped at 1.0"
+}

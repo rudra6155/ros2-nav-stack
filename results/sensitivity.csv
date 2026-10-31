@@ -1,0 +1,8 @@
+parameter,value,world,n_episodes,success_rate,mean_time_s,mean_path_m,collision_count_total,timeout_count,mean_min_obstacle_distance_m
+inflation,0.2000,cluttered,5,1.0000,20.0720,8.3418,5,0,0.1626
+inflation,0.3000,cluttered,5,1.0000,18.6760,8.3966,0,0,0.2648
+inflation,0.4000,cluttered,5,1.0000,18.6240,8.4570,0,0,0.3212
+inflation,0.5000,cluttered,5,1.0000,27.4760,11.3940,0,0,0.3548
+lookahead,0.3000,cluttered,5,1.0000,18.5560,8.3724,0,0,0.2678
+lookahead,0.6000,cluttered,5,1.0000,18.4840,8.3764,0,0,0.2628
+lookahead,1.2000,cluttered,5,0.8000,19.0700,6.5408,2,1,0.2140

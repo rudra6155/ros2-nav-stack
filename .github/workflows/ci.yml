@@ -1,0 +1,47 @@
+name: CI
+
+# Build + unit tests + the headless smoke (all nodes up in < 30 s, TF/topic audit).
+# The 40 evaluation episodes are deliberately NOT here (about 25 minutes of simulation):
+# they live in the manually triggered workflow episodes.yml.
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  build-test-smoke:
+    runs-on: ubuntu-22.04
+    timeout-minutes: 75
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: docker compose build
+        run: docker compose build
+
+      - name: colcon build
+        run: docker compose run --rm ros2 bash -lc "colcon build --symlink-install"
+
+      - name: colcon test
+        run: docker compose run --rm ros2 bash -lc "colcon test --event-handlers console_direct+ && colcon test-result --verbose"
+
+      - name: Headless launch smoke (all nodes up in < 30 s)
+        run: docker compose run --rm ros2 bash -lc "/workspace/scripts/check_launch_smoke.sh"
+
+      - name: TF / topic / node audit
+        run: docker compose run --rm ros2 bash -lc "/workspace/scripts/check_tf.sh"
+
+      - name: Frame-id audit
+        run: docker compose run --rm ros2 bash -lc "/workspace/scripts/check_frames.sh"
+
+      - name: Upload audit reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: audit-reports
+          path: |
+            results/tf_audit.txt
+            results/frame_audit.txt
+            results/launch_smoke.txt
+            results/evidence/
+            results/logs/
+          if-no-files-found: ignore

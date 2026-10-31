@@ -1,0 +1,8 @@
+{
+  "name": "check_crash_handling",
+  "status": "pass",
+  "utc": "2026-10-29T21:23:43Z",
+  "command": "scripts/check_crash_handling.sh",
+  "git_commit": "6832a28",
+  "details": "killing astar_planner (pid: 3117 ) during episode 2\nrun_episodes exit code: 0\nPASS  3 episodes recorded (none dropped)\nPASS  episode 2: success=false\nPASS  episode 2: timed_out=true\nPASS  episode 2: crashed=true, stop_reason=node_crash\nPASS  crash_log.txt names the node (astar_planner) and the episode\nPASS  crash_log.txt carries the node stderr tail\nPASS  stack restarted: episode 3 ran after the crash\n"
+}

@@ -1,0 +1,24 @@
+# colcon
+ros2_ws/build/
+ros2_ws/install/
+ros2_ws/log/
+
+# python
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# large artifacts that are regenerated (manifest is committed)
+results/bags/
+results/logs/
+results/tmp/
+*.mp4
+
+# editors / OS
+.vscode/
+.idea/
+.DS_Store
+
+# per-run launch logs of the sweeps (the small wallclock.txt files are kept)
+results/sensitivity/*/logs/*launch*.log
+results/sensitivity/*/logs/*bag*.log

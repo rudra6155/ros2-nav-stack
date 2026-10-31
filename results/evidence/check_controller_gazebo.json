@@ -1,0 +1,8 @@
+{
+  "name": "check_controller_gazebo",
+  "status": "pass",
+  "utc": "2026-10-29T21:22:32Z",
+  "command": "scripts/check_controller_gazebo.sh",
+  "git_commit": "6832a28",
+  "details": "{\n  \"start_offset_m\": 0.5,\n  \"duration_s\": 5,\n  \"threshold_m\": 0.1,\n  \"initial_error_m\": 0.499999,\n  \"error_at_duration_m\": 0.0185435,\n  \"settle_time_s\": 2.68,\n  \"max_commanded_linear_mps\": 0.499997,\n  \"max_commanded_angular_radps\": 0.62969,\n  \"limit_linear_mps\": 0.5,\n  \"limit_angular_radps\": 1.2,\n  \"samples\": 261,\n  \"passed\": true\n}\n"
+}

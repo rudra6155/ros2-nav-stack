@@ -1,0 +1,20 @@
+{
+  "generated_utc": "2026-10-29T20:14:23Z",
+  "cpu_model": "Intel(R) Xeon(R) Processor @ 2.10GHz",
+  "cpu_logical_cores": 4,
+  "memory_gib": 15.71,
+  "hypervisor": "KVM",
+  "gpu": "none used (headless gzserver, CPU ray sensor)",
+  "kernel": "6.8.0-45-generic",
+  "os_in_container": "Ubuntu 22.04.5 LTS",
+  "ros_distro": "humble",
+  "gazebo": "Gazebo multi-robot simulator, version 11.10.2",
+  "gcc": "g++ (Ubuntu 11.4.0-1ubuntu1~22.04.3) 11.4.0",
+  "cmake": "cmake version 3.22.1",
+  "python": "3.10.12",
+  "rmw_implementation": "default (rmw_fastrtps_cpp)",
+  "ros_domain_id": "42",
+  "docker_container": true,
+  "git_commit": "c35c293",
+  "note": "Simulated in Gazebo Classic; real-time factor is capped at 1.0 by world physics settings."
+}

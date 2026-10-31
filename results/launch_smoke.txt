@@ -1,0 +1,2 @@
+ALL 10 nodes present after 1.8 s
+PASS: all nodes up in 1.8 s (< 30 s)

@@ -1,0 +1,130 @@
+{
+  "frame_mismatch": {
+    "episode": 2,
+    "fault": "lidar plugin frame_name = 'laser_link' (URDF link is 'laser')",
+    "probe": {
+      "scan_frame": "laser_link",
+      "scan_msgs": 646,
+      "costmap_msgs": 132,
+      "max_known_cells": 0,
+      "max_occupied_cells": 0,
+      "plan_msgs": 132,
+      "plan_empty": 12,
+      "plan_nonempty": 120
+    },
+    "result": {
+      "success": false,
+      "timed_out": true,
+      "time_to_goal_s": "nan",
+      "path_length_m": 1.687,
+      "collision_count": 1,
+      "min_obstacle_distance_m": 0.16,
+      "stop_reason": "hard_timeout",
+      "final_goal_dist_m": 11.015,
+      "rtf": 0.999,
+      "seed": 1002
+    },
+    "baseline": {
+      "success": true,
+      "timed_out": false,
+      "time_to_goal_s": "28.460",
+      "path_length_m": 12.61,
+      "collision_count": 0,
+      "min_obstacle_distance_m": 0.303,
+      "stop_reason": "goal_reached",
+      "final_goal_dist_m": 0.299,
+      "rtf": 0.997,
+      "seed": 1002
+    },
+    "dropped_scan_warnings": 26
+  },
+  "unreachable_goal": {
+    "goal_inside_wall": {
+      "goal": [
+        0.0,
+        6.1
+      ],
+      "plan_msgs_nonempty": 0,
+      "plan_msgs_empty": 20,
+      "max_cmd_linear_mps": 0.0,
+      "robot_moved_m": 0.001
+    },
+    "goal_outside_map": {
+      "goal": [
+        20.0,
+        0.0
+      ],
+      "plan_msgs_nonempty": 0,
+      "plan_msgs_empty": 20,
+      "max_cmd_linear_mps": 0.0,
+      "robot_moved_m": 0.001
+    },
+    "planner_alive_after": true,
+    "planner_warnings": 10,
+    "planner_warning_reasons": [
+      "goal is inside an obstacle",
+      "goal is outside the map"
+    ]
+  },
+  "low_rtf": {
+    "busy_loops": 12,
+    "cores": 4,
+    "stack_nice": 15,
+    "episodes": [
+      {
+        "episode": 2,
+        "loaded": {
+          "success": true,
+          "timed_out": false,
+          "time_to_goal_s": "28.460",
+          "path_length_m": 12.618,
+          "collision_count": 0,
+          "min_obstacle_distance_m": 0.303,
+          "stop_reason": "goal_reached",
+          "final_goal_dist_m": 0.286,
+          "rtf": 0.267,
+          "seed": 1002
+        },
+        "baseline": {
+          "success": true,
+          "timed_out": false,
+          "time_to_goal_s": "28.460",
+          "path_length_m": 12.61,
+          "collision_count": 0,
+          "min_obstacle_distance_m": 0.303,
+          "stop_reason": "goal_reached",
+          "final_goal_dist_m": 0.299,
+          "rtf": 0.997,
+          "seed": 1002
+        }
+      },
+      {
+        "episode": 8,
+        "loaded": {
+          "success": true,
+          "timed_out": false,
+          "time_to_goal_s": "23.900",
+          "path_length_m": 11.47,
+          "collision_count": 0,
+          "min_obstacle_distance_m": 0.327,
+          "stop_reason": "goal_reached",
+          "final_goal_dist_m": 0.288,
+          "rtf": 0.315,
+          "seed": 1008
+        },
+        "baseline": {
+          "success": true,
+          "timed_out": false,
+          "time_to_goal_s": "23.940",
+          "path_length_m": 11.46,
+          "collision_count": 0,
+          "min_obstacle_distance_m": 0.332,
+          "stop_reason": "goal_reached",
+          "final_goal_dist_m": 0.3,
+          "rtf": 0.997,
+          "seed": 1008
+        }
+      }
+    ]
+  }
+}

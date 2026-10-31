@@ -1,0 +1,24 @@
+PASS  received /scan
+PASS  /scan header.frame_id == 'laser' (got 'laser')
+PASS  /scan frame is a URDF link (['base_link', 'camera', 'caster_front', 'caster_rear', 'laser', 'left_wheel', 'right_wheel'])
+PASS  received /odom
+PASS  /odom header.frame_id == 'odom' (got 'odom')
+PASS  /odom child_frame_id == 'base_link' (got 'base_link')
+PASS  /odom child frame is a URDF link
+PASS  received /costmap
+PASS  /costmap header.frame_id == 'map' (got 'map')
+PASS  received /obstacles
+PASS  /obstacles header.frame_id == 'map' (got 'map')
+PASS  received /plan (non-empty)
+PASS  /plan header.frame_id == 'map' (got 'map')
+PASS  received TF
+PASS  every robot frame in TF is a URDF link (extra: [])
+PASS  no 'laser_link' anywhere (frame name is exactly 'laser')
+PASS  frame 'base_link' is in the TF tree
+PASS  frame 'laser' is in the TF tree
+PASS  frame 'camera' is in the TF tree
+PASS  frames 'map' and 'odom' are in the TF tree
+SKIP  camera image frame (the Gazebo camera sensor is disabled in headless runs; 'camera' still exists in the URDF and TF)
+
+URDF links      : ['base_link', 'camera', 'caster_front', 'caster_rear', 'laser', 'left_wheel', 'right_wheel']
+TF frames       : ['base_link', 'camera', 'caster_front', 'caster_rear', 'laser', 'left_wheel', 'map', 'odom', 'right_wheel']

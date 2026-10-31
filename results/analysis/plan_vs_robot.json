@@ -1,0 +1,66 @@
+{
+  "cluttered_2": {
+    "seed": 1002,
+    "window_s": [
+      0.0,
+      6.0
+    ],
+    "closest_clearance_m": 0.183,
+    "closest_t_s": 3.25,
+    "cross_track_at_closest_m": 0.042,
+    "plan_clearance_ahead_at_closest_m": 0.2,
+    "max_cross_track_in_window_m": 0.058,
+    "min_plan_clearance_in_window_m": 0.185,
+    "nearest_lidar_return_to_that_surface_point_m": 0.002,
+    "robot_to_min_clearance_plan_point_m": 0.042,
+    "min_plan_clearance_beyond_bubble_in_window_m": 0.247
+  },
+  "cluttered_15": {
+    "seed": 1015,
+    "window_s": [
+      9.0,
+      15.0
+    ],
+    "closest_clearance_m": 0.19,
+    "closest_t_s": 12.75,
+    "cross_track_at_closest_m": 0.063,
+    "plan_clearance_ahead_at_closest_m": 0.123,
+    "max_cross_track_in_window_m": 0.115,
+    "min_plan_clearance_in_window_m": 0.123,
+    "nearest_lidar_return_to_that_surface_point_m": 0.002,
+    "robot_to_min_clearance_plan_point_m": 0.136,
+    "min_plan_clearance_beyond_bubble_in_window_m": 0.142
+  },
+  "cluttered_13": {
+    "seed": 1013,
+    "window_s": [
+      13.0,
+      18.0
+    ],
+    "closest_clearance_m": 0.233,
+    "closest_t_s": 16.25,
+    "cross_track_at_closest_m": 0.043,
+    "plan_clearance_ahead_at_closest_m": 0.251,
+    "max_cross_track_in_window_m": 0.048,
+    "min_plan_clearance_in_window_m": 0.216,
+    "nearest_lidar_return_to_that_surface_point_m": 0.002,
+    "robot_to_min_clearance_plan_point_m": 0.043,
+    "min_plan_clearance_beyond_bubble_in_window_m": 0.216
+  },
+  "cluttered_4_lk12": {
+    "seed": 1004,
+    "window_s": [
+      0.0,
+      8.0
+    ],
+    "closest_clearance_m": 0.16,
+    "closest_t_s": 7.75,
+    "cross_track_at_closest_m": 0.001,
+    "plan_clearance_ahead_at_closest_m": 0.139,
+    "max_cross_track_in_window_m": 0.119,
+    "min_plan_clearance_in_window_m": 0.1,
+    "nearest_lidar_return_to_that_surface_point_m": 0.001,
+    "robot_to_min_clearance_plan_point_m": 0.093,
+    "min_plan_clearance_beyond_bubble_in_window_m": 0.23
+  }
+}

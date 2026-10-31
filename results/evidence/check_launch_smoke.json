@@ -1,0 +1,8 @@
+{
+  "name": "check_launch_smoke",
+  "status": "pass",
+  "utc": "2026-10-29T21:19:40Z",
+  "command": "scripts/check_launch_smoke.sh simple",
+  "git_commit": "6832a28",
+  "details": "ALL 10 nodes present after 1.8 s\nPASS: all nodes up in 1.8 s (< 30 s)\n"
+}

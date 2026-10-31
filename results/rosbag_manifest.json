@@ -1,0 +1,140 @@
+{
+  "generated_utc": "2026-10-29T20:14:23Z",
+  "description": "rosbag2 recordings of the evaluation runs (sim time). Bags are not committed (size); regenerate with `ros2 run evaluation run_episodes --world <w> --episodes 20`.",
+  "bags": [
+    {
+      "name": "eval_cluttered",
+      "path": "results/bags/eval_cluttered",
+      "storage_identifier": "sqlite3",
+      "duration_s": 443.05,
+      "message_count": 133469,
+      "topics": [
+        {
+          "name": "/goal_pose",
+          "type": "geometry_msgs/msg/PoseStamped",
+          "messages": 20
+        },
+        {
+          "name": "/bumper_states",
+          "type": "gazebo_msgs/msg/ContactsState",
+          "messages": 22089
+        },
+        {
+          "name": "/cmd_vel",
+          "type": "geometry_msgs/msg/Twist",
+          "messages": 8840
+        },
+        {
+          "name": "/clock",
+          "type": "rosgraph_msgs/msg/Clock",
+          "messages": 4420
+        },
+        {
+          "name": "/tf",
+          "type": "tf2_msgs/msg/TFMessage",
+          "messages": 66274
+        },
+        {
+          "name": "/obstacles",
+          "type": "geometry_msgs/msg/PoseArray",
+          "messages": 4421
+        },
+        {
+          "name": "/odom",
+          "type": "nav_msgs/msg/Odometry",
+          "messages": 22098
+        },
+        {
+          "name": "/plan",
+          "type": "nav_msgs/msg/Path",
+          "messages": 884
+        },
+        {
+          "name": "/scan",
+          "type": "sensor_msgs/msg/LaserScan",
+          "messages": 4421
+        },
+        {
+          "name": "/tf_static",
+          "type": "tf2_msgs/msg/TFMessage",
+          "messages": 2
+        }
+      ],
+      "files": [
+        {
+          "file": "eval_cluttered_0.db3",
+          "bytes": 59334656,
+          "sha256": "caaaaf82c5b62efe918348eb5f0dafa9ad96c492478e5e05696c5c14db16e099"
+        }
+      ],
+      "committed_to_git": false
+    },
+    {
+      "name": "eval_simple",
+      "path": "results/bags/eval_simple",
+      "storage_identifier": "sqlite3",
+      "duration_s": 414.57,
+      "message_count": 124880,
+      "topics": [
+        {
+          "name": "/plan",
+          "type": "nav_msgs/msg/Path",
+          "messages": 821
+        },
+        {
+          "name": "/tf_static",
+          "type": "tf2_msgs/msg/TFMessage",
+          "messages": 2
+        },
+        {
+          "name": "/cmd_vel",
+          "type": "geometry_msgs/msg/Twist",
+          "messages": 8268
+        },
+        {
+          "name": "/bumper_states",
+          "type": "gazebo_msgs/msg/ContactsState",
+          "messages": 20666
+        },
+        {
+          "name": "/goal_pose",
+          "type": "geometry_msgs/msg/PoseStamped",
+          "messages": 20
+        },
+        {
+          "name": "/clock",
+          "type": "rosgraph_msgs/msg/Clock",
+          "messages": 4135
+        },
+        {
+          "name": "/tf",
+          "type": "tf2_msgs/msg/TFMessage",
+          "messages": 62025
+        },
+        {
+          "name": "/obstacles",
+          "type": "geometry_msgs/msg/PoseArray",
+          "messages": 4134
+        },
+        {
+          "name": "/odom",
+          "type": "nav_msgs/msg/Odometry",
+          "messages": 20675
+        },
+        {
+          "name": "/scan",
+          "type": "sensor_msgs/msg/LaserScan",
+          "messages": 4134
+        }
+      ],
+      "files": [
+        {
+          "file": "eval_simple_0.db3",
+          "bytes": 55353344,
+          "sha256": "062a9fd1a0970b25f02eea7f342c4d7ee0022c9a2773b347259116120e80da8b"
+        }
+      ],
+      "committed_to_git": false
+    }
+  ]
+}

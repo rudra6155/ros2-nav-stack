@@ -1,0 +1,11 @@
+# Topics that must exist (type is checked by the frame audit / liveness checks where relevant).
+/scan
+/odom
+/cmd_vel
+/plan
+/obstacles
+/costmap
+/goal_pose
+/tf
+/tf_static
+/clock

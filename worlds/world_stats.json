@@ -1,0 +1,29 @@
+{
+  "simple": {
+    "seed": 11,
+    "n_obstacles": 8,
+    "n_cylinders": 7,
+    "n_boxes": 1,
+    "arena_m": 12.0,
+    "obstacle_area_fraction": 0.0177,
+    "min_corridor_width_m": 1.744
+  },
+  "empty": {
+    "seed": 0,
+    "n_obstacles": 0,
+    "n_cylinders": 0,
+    "n_boxes": 0,
+    "arena_m": 12.0,
+    "obstacle_area_fraction": 0.0,
+    "min_corridor_width_m": null
+  },
+  "cluttered": {
+    "seed": 23,
+    "n_obstacles": 30,
+    "n_cylinders": 23,
+    "n_boxes": 7,
+    "arena_m": 12.0,
+    "obstacle_area_fraction": 0.072,
+    "min_corridor_width_m": 0.819
+  }
+}

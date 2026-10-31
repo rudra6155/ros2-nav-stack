@@ -1,0 +1,13 @@
+# Every node that sim.launch.py headless:=true must bring up (one per line, absolute names).
+# Plugin nodes created inside gzserver are listed too. spawn_diffbot is deliberately absent: it
+# is a one-shot process that exits after spawning the robot.
+/gazebo
+/gazebo_ros_state
+/diff_drive
+/lidar_plugin
+/bumper_plugin
+/robot_state_publisher
+/map_odom_static_tf
+/obstacle_detector
+/astar_planner
+/waypoint_follower

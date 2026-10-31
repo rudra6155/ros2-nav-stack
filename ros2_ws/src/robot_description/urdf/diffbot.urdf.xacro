@@ -1,0 +1,242 @@
+<?xml version="1.0"?>
+<!--
+  Differential-drive robot for Gazebo Classic (gazebo11, gazebo_ros_pkgs).
+
+  Frames (must match what is published; see scripts/check_frames.sh):
+    base_link  root link, pose published as odom -> base_link by the diff-drive plugin
+    laser      2D lidar, 360 samples @ 10 Hz   (NOT "laser_link")
+    camera     RGB camera                      (sensor only enabled with enable_camera:=true)
+    left_wheel, right_wheel, caster_front, caster_rear
+
+  Velocity limits come from config/robot_limits.yaml (single source of truth).
+-->
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="diffbot">
+
+  <xacro:arg name="enable_camera" default="false"/>
+  <!-- frame_id the lidar plugin stamps on /scan. MUST equal the link name "laser"; the arg exists only so
+       scripts/fault_injection.sh can break it on purpose and show what happens. -->
+  <xacro:arg name="lidar_frame" default="laser"/>
+
+  <!-- ===================== parameters ===================== -->
+  <xacro:property name="limits" value="${xacro.load_yaml('$(find robot_description)/config/robot_limits.yaml')}"/>
+  <xacro:property name="v_max" value="${limits['/**']['ros__parameters']['max_linear_velocity']}"/>
+  <xacro:property name="w_max" value="${limits['/**']['ros__parameters']['max_angular_velocity']}"/>
+
+  <xacro:property name="base_radius" value="0.16"/>
+  <xacro:property name="base_height" value="0.10"/>
+  <xacro:property name="base_z"      value="0.03"/>   <!-- chassis center above base_link origin (axle height) -->
+  <xacro:property name="base_mass"   value="5.0"/>
+
+  <xacro:property name="wheel_radius" value="0.05"/>
+  <xacro:property name="wheel_width"  value="0.03"/>
+  <xacro:property name="wheel_y"      value="0.14"/>  <!-- wheel centre offset; wheel outer face stays inside the chassis radius -->
+  <xacro:property name="wheel_mass"   value="0.5"/>
+
+  <xacro:property name="caster_radius" value="0.025"/>
+  <xacro:property name="caster_x"      value="0.11"/>
+  <xacro:property name="caster_mass"   value="0.1"/>
+
+  <!-- wheel speed needed for v_max and w_max simultaneously (rad/s) -->
+  <xacro:property name="wheel_vel_limit" value="${v_max/wheel_radius + w_max*wheel_y/wheel_radius}"/>
+
+  <!-- ===================== materials ===================== -->
+  <material name="chassis"><color rgba="0.15 0.35 0.85 1.0"/></material>
+  <material name="wheel"><color rgba="0.1 0.1 0.1 1.0"/></material>
+  <material name="sensor"><color rgba="0.9 0.2 0.2 1.0"/></material>
+
+  <!-- ===================== links ===================== -->
+  <link name="base_link">
+    <visual>
+      <origin xyz="0 0 ${base_z}" rpy="0 0 0"/>
+      <geometry><cylinder radius="${base_radius}" length="${base_height}"/></geometry>
+      <material name="chassis"/>
+    </visual>
+    <!-- unnamed on purpose: becomes "base_link_collision" in SDF, referenced by the contact sensor below -->
+    <collision>
+      <origin xyz="0 0 ${base_z}" rpy="0 0 0"/>
+      <geometry><cylinder radius="${base_radius}" length="${base_height}"/></geometry>
+    </collision>
+    <inertial>
+      <origin xyz="0 0 ${base_z}" rpy="0 0 0"/>
+      <mass value="${base_mass}"/>
+      <inertia ixx="${base_mass*(3*base_radius*base_radius + base_height*base_height)/12.0}" ixy="0" ixz="0"
+               iyy="${base_mass*(3*base_radius*base_radius + base_height*base_height)/12.0}" iyz="0"
+               izz="${base_mass*base_radius*base_radius/2.0}"/>
+    </inertial>
+  </link>
+
+  <xacro:macro name="wheel" params="name y_sign">
+    <link name="${name}">
+      <visual>
+        <geometry><cylinder radius="${wheel_radius}" length="${wheel_width}"/></geometry>
+        <material name="wheel"/>
+      </visual>
+      <collision>
+        <geometry><cylinder radius="${wheel_radius}" length="${wheel_width}"/></geometry>
+      </collision>
+      <inertial>
+        <mass value="${wheel_mass}"/>
+        <inertia ixx="${wheel_mass*(3*wheel_radius*wheel_radius + wheel_width*wheel_width)/12.0}" ixy="0" ixz="0"
+                 iyy="${wheel_mass*(3*wheel_radius*wheel_radius + wheel_width*wheel_width)/12.0}" iyz="0"
+                 izz="${wheel_mass*wheel_radius*wheel_radius/2.0}"/>
+      </inertial>
+    </link>
+    <joint name="${name}_joint" type="continuous">
+      <parent link="base_link"/>
+      <child link="${name}"/>
+      <origin xyz="0 ${y_sign*wheel_y} 0" rpy="${-pi/2} 0 0"/>
+      <axis xyz="0 0 1"/>
+      <limit effort="5.0" velocity="${wheel_vel_limit}"/>
+      <dynamics damping="0.01" friction="0.0"/>
+    </joint>
+  </xacro:macro>
+
+  <xacro:wheel name="left_wheel"  y_sign="1"/>
+  <xacro:wheel name="right_wheel" y_sign="-1"/>
+
+  <xacro:macro name="caster" params="name x">
+    <link name="${name}">
+      <visual><geometry><sphere radius="${caster_radius}"/></geometry><material name="wheel"/></visual>
+      <collision><geometry><sphere radius="${caster_radius}"/></geometry></collision>
+      <inertial>
+        <mass value="${caster_mass}"/>
+        <inertia ixx="${0.4*caster_mass*caster_radius*caster_radius}" ixy="0" ixz="0"
+                 iyy="${0.4*caster_mass*caster_radius*caster_radius}" iyz="0"
+                 izz="${0.4*caster_mass*caster_radius*caster_radius}"/>
+      </inertial>
+    </link>
+    <joint name="${name}_joint" type="fixed">
+      <parent link="base_link"/>
+      <child link="${name}"/>
+      <origin xyz="${x} 0 ${caster_radius - wheel_radius}" rpy="0 0 0"/>
+    </joint>
+    <gazebo reference="${name}">
+      <mu1>0.0</mu1><mu2>0.0</mu2><kp>1000000.0</kp><kd>100.0</kd>
+    </gazebo>
+  </xacro:macro>
+
+  <xacro:caster name="caster_front" x="${caster_x}"/>
+  <xacro:caster name="caster_rear"  x="${-caster_x}"/>
+
+  <!-- 2D lidar: mounted above the chassis top so beams never hit the robot itself -->
+  <link name="laser">
+    <visual>
+      <geometry><cylinder radius="0.035" length="0.04"/></geometry>
+      <material name="sensor"/>
+    </visual>
+    <inertial>
+      <mass value="0.1"/>
+      <inertia ixx="1e-4" ixy="0" ixz="0" iyy="1e-4" iyz="0" izz="1e-4"/>
+    </inertial>
+  </link>
+  <joint name="laser_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="laser"/>
+    <origin xyz="0 0 0.12" rpy="0 0 0"/>
+  </joint>
+
+  <!-- RGB camera (link and TF always present; the Gazebo sensor needs enable_camera:=true) -->
+  <link name="camera">
+    <visual>
+      <geometry><box size="0.03 0.06 0.03"/></geometry>
+      <material name="sensor"/>
+    </visual>
+    <inertial>
+      <mass value="0.05"/>
+      <inertia ixx="1e-5" ixy="0" ixz="0" iyy="1e-5" iyz="0" izz="1e-5"/>
+    </inertial>
+  </link>
+  <joint name="camera_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="camera"/>
+    <origin xyz="0.13 0 0.09" rpy="0 0 0"/>
+  </joint>
+
+  <!-- ===================== gazebo ===================== -->
+  <gazebo reference="left_wheel">
+    <mu1>1.0</mu1><mu2>1.0</mu2><kp>500000.0</kp><kd>10.0</kd><minDepth>0.001</minDepth>
+  </gazebo>
+  <gazebo reference="right_wheel">
+    <mu1>1.0</mu1><mu2>1.0</mu2><kp>500000.0</kp><kd>10.0</kd><minDepth>0.001</minDepth>
+  </gazebo>
+
+  <gazebo reference="base_link">
+    <material>Gazebo/Blue</material>
+    <!-- Ground-truth collision detector: contacts of the chassis only (wheels/casters excluded) -->
+    <sensor name="bumper" type="contact">
+      <always_on>true</always_on>
+      <update_rate>50</update_rate>
+      <contact><collision>base_link_collision</collision></contact>
+      <plugin name="bumper_plugin" filename="libgazebo_ros_bumper.so">
+        <ros><namespace>/</namespace><remapping>bumper_states:=bumper_states</remapping></ros>
+        <frame_name>base_link</frame_name>
+      </plugin>
+    </sensor>
+  </gazebo>
+
+  <gazebo reference="laser">
+    <sensor name="lidar" type="ray">
+      <always_on>true</always_on>
+      <visualize>false</visualize>
+      <update_rate>10</update_rate>
+      <ray>
+        <scan>
+          <horizontal>
+            <samples>360</samples>
+            <resolution>1</resolution>
+            <!-- [-180 deg, +179 deg] -> exactly 1 deg increment, 360 samples -->
+            <min_angle>-3.14159265</min_angle>
+            <max_angle>3.12413936</max_angle>
+          </horizontal>
+        </scan>
+        <range><min>0.12</min><max>6.0</max><resolution>0.01</resolution></range>
+        <noise><type>gaussian</type><mean>0.0</mean><stddev>0.005</stddev></noise>
+      </ray>
+      <plugin name="lidar_plugin" filename="libgazebo_ros_ray_sensor.so">
+        <ros><namespace>/</namespace><remapping>~/out:=scan</remapping></ros>
+        <output_type>sensor_msgs/LaserScan</output_type>
+        <frame_name>$(arg lidar_frame)</frame_name>
+      </plugin>
+    </sensor>
+  </gazebo>
+
+  <xacro:if value="$(arg enable_camera)">
+    <gazebo reference="camera">
+      <sensor name="rgb_camera" type="camera">
+        <always_on>true</always_on>
+        <visualize>false</visualize>
+        <update_rate>10</update_rate>
+        <camera>
+          <horizontal_fov>1.047</horizontal_fov>
+          <image><width>320</width><height>240</height><format>R8G8B8</format></image>
+          <clip><near>0.05</near><far>10.0</far></clip>
+        </camera>
+        <plugin name="camera_plugin" filename="libgazebo_ros_camera.so">
+          <ros><namespace>/camera</namespace></ros>
+          <frame_name>camera</frame_name>
+        </plugin>
+      </sensor>
+    </gazebo>
+  </xacro:if>
+
+  <gazebo>
+    <plugin name="diff_drive" filename="libgazebo_ros_diff_drive.so">
+      <ros><namespace>/</namespace></ros>
+      <update_rate>50</update_rate>
+      <left_joint>left_wheel_joint</left_joint>
+      <right_joint>right_wheel_joint</right_joint>
+      <wheel_separation>${2*wheel_y}</wheel_separation>
+      <wheel_diameter>${2*wheel_radius}</wheel_diameter>
+      <max_wheel_torque>5.0</max_wheel_torque>
+      <max_wheel_acceleration>20.0</max_wheel_acceleration>
+      <publish_odom>true</publish_odom>
+      <publish_odom_tf>true</publish_odom_tf>
+      <publish_wheel_tf>true</publish_wheel_tf>
+      <odometry_frame>odom</odometry_frame>
+      <robot_base_frame>base_link</robot_base_frame>
+      <!-- 1 = WORLD: ground-truth odometry (localization is out of scope) -->
+      <odometry_source>1</odometry_source>
+    </plugin>
+  </gazebo>
+
+</robot>

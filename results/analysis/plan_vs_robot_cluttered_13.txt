@@ -1,0 +1,2 @@
+closest approach: clearance 0.233 m at t=16.25 s, cross-track to the plan then 0.043 m, plan clearance ahead 0.251 m
+plan point nearest to an obstacle: (3.13, -1.07), clearance to the true surface 0.251 m; distance from the nearest true-surface point to the closest lidar return seen so far: 0.002 m; that plan point is 0.04 m from the robot
